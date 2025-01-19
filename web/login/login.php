@@ -14,7 +14,7 @@
       <h1 class="login_header">Zaloguj się</h1>
       <div class="login_form__inputs">
         <input type="text" name="email" placeholder="Email" class="login_text__input">
-        <input type="text" name="password" placeholder="Hasło" class="login_text__input">
+        <input type="password" name="password" placeholder="Hasło" class="login_text__input">
       </div>
       <div>
         <button class="login_action__button" name="action" value="zaloguj">Zaloguj się</button>

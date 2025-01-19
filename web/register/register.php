@@ -12,9 +12,12 @@
   <body class="register_page">
     <form method="post" class="register_form">
       <h1 class="register_header">Zarejstruj się</h1>
+      <?php show_errors() ?>
       <div class="register_form__inputs">
+        <input type="text" name="name" placeholder="Imię" value="<?php $name ?? '' ?>" class="register_text__input">
+        <input type="text" name="surname" placeholder="Nazwisko" class="register_text__input">
         <input type="text" name="email" placeholder="Email" class="register_text__input">
-        <input type="text" name="password" placeholder="Hasło" class="register_text__input">
+        <input type="password" name="password" placeholder="Hasło" class="register_text__input">
       </div>
       <div>
         <button class="register_action__button" name="action" value="zarejestruj">Zarejestruj</button>
