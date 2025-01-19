@@ -23,10 +23,8 @@
                 VALUES ('$name', '$surname', '$email', '$hashed_password');";
   
       if(mysqli_query($conn, $query)) {
-        echo "Uzytkownik dodany do bazy";
-        // TODO: dodaj przekierowanie do index pagea
-        // tymczasowe
-        header('Location: ./register.php');
+        // TODO: Przed przeniesieniem ustal sesje. (manage it from config.php)
+        header('Location: ../index/index.php');
       } else {
         echo "Cos poszlo nie tak!".mysqli_error( $conn);
       }
