@@ -14,11 +14,10 @@
   if ($action == 'zarejestruj') register($errors, $name, $surname, $email, $password);
 
   function register(&$errors, $name, $surname, $email, $password) {
-    // TODO: sprawdz, czy uzytkownik z takim mailem juz nie istnieje
-    validate_attrs($errors, $name, $surname, $email, $password);
+    $conn = get_conn();
+    validate_attrs($errors, $conn, $name, $surname, $email, $password);
 
     if (count($errors) === 0) {
-      $conn = get_conn();
       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO pacjenci (imie, nazwisko, email, haslo) 
                 VALUES ('$name', '$surname', '$email', '$hashed_password');";
@@ -31,15 +30,15 @@
       } else {
         echo "Cos poszlo nie tak!".mysqli_error( $conn);
       }
-  
-      close_conn($conn);
     } 
+
+    close_conn($conn);
   }
 
-  function validate_attrs(&$errors, $name, $surname, $email, $password) {
+  function validate_attrs(&$errors, $conn, $name, $surname, $email, $password) {
     if (!is_name_valid($name)) array_push($errors, "Imie nie moze byc puste.");
     if (!is_name_valid($surname)) array_push($errors, "Nazwisko nie moze byc puste");
-    if (!is_email_valid($email)) array_push($errors, "Niepoprawny adres email.");
+    if (!is_email_valid($email, $conn)) array_push($errors, "Niepoprawny adres email.");
     if (!is_password_valid($password)) array_push($errors, "Niepoprawne hasło. Powinno składać się z min 5 znaków.");
 
     return $errors;
@@ -49,8 +48,15 @@
     return strlen($value) > 0;
   }
 
-  function is_email_valid($email) {
-    return filter_var($email, FILTER_VALIDATE_EMAIL) && explode('@', $email)[1] !== PRZYCHODNIA_DOMAIN;
+  // TODO: rozbij na 3 mniejsze
+  function is_email_valid($email, $conn) {
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+      $query = "SELECT * FROM pacjenci WHERE email LIKE '$email';";
+      $result = mysqli_query($conn, $query);
+
+      return mysqli_num_rows($result) === 0 && explode('@', $email)[1] !== PRZYCHODNIA_DOMAIN;
+    }
+    return false;
   }
 
   function is_password_valid($password) {
