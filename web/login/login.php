@@ -1,3 +1,5 @@
+<?php require('login_actions.php') ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,12 +13,12 @@
     <form method="post" class="login_form">
       <h1 class="login_header">Zaloguj się</h1>
       <div class="login_form__inputs">
-        <input type="text" name="email" placeholder="Email" class="login_text__input" required>
-        <input type="text" name="password" placeholder="Hasło" class="login_text__input" required>
+        <input type="text" name="email" placeholder="Email" class="login_text__input">
+        <input type="text" name="password" placeholder="Hasło" class="login_text__input">
       </div>
       <div>
-        <button class="login_action__button">Zaloguj się</button>
-        <button class="login_action__button">Zarejestruj</button>
+        <button class="login_action__button" name="action" value="zaloguj">Zaloguj się</button>
+        <button class="login_action__button" name="action" value="zarejestruj">Zarejestruj</button>
       </div>
     </form>
   </body>
