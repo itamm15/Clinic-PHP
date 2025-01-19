@@ -14,13 +14,14 @@
   if ($action == 'zarejestruj') register($errors, $name, $surname, $email, $password);
 
   function register(&$errors, $name, $surname, $email, $password) {
+    // TODO: sprawdz, czy uzytkownik z takim mailem juz nie istnieje
     validate_attrs($errors, $name, $surname, $email, $password);
 
     if (count($errors) === 0) {
       $conn = get_conn();
-      // TODO: hash_password
+      $hashed_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO pacjenci (imie, nazwisko, email, haslo) 
-                VALUES ('$name', '$surname', '$email', '$password');";
+                VALUES ('$name', '$surname', '$email', '$hashed_password');";
   
       if(mysqli_query($conn, $query)) {
         echo "Uzytkownik dodany do bazy";
