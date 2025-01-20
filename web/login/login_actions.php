@@ -24,5 +24,6 @@
     }
 
     // TODO: wpp dodaj errory
+    close_conn($conn);
   }
 ?>
