@@ -23,7 +23,7 @@
                 VALUES ('$name', '$surname', '$email', '$hashed_password');";
   
       if(mysqli_query($conn, $query)) {
-        // TODO: Przed przeniesieniem ustal sesje. (manage it from config.php)
+        start_session($name, $surname, $email);
         header('Location: ../index/index.php');
       } else {
         echo "Cos poszlo nie tak!".mysqli_error( $conn);

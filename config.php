@@ -17,4 +17,22 @@
   function close_conn($conn) {
     mysqli_close($conn);
   }
+
+  // SESSION
+  function start_session($name, $surname, $email) {
+    session_start();
+    $_SESSION["name"] = $name;
+    $_SESSION["surname"] = $surname;
+    $_SESSION["email"] = $email;
+  }
+
+  function stop_session() {
+    session_unset();
+    session_destroy();
+  }
+
+  function get_session_property($key) {
+    session_start();
+    return  $_SESSION[$key];
+  }
 ?>

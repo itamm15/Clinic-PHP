@@ -1,3 +1,5 @@
+<?php require('../../config.php') ?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,6 +10,7 @@
   </head>
   <body>
     INDEX PAGE
+    <?php echo get_session_property('name') ?>
     <div class="index_page">
       <!-- MENU -->
 
