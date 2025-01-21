@@ -27,12 +27,13 @@
   }
 
   function stop_session() {
+    session_start();
     session_unset();
     session_destroy();
   }
 
   function get_session_property($key) {
-    session_start();
+    if(session_status() !== PHP_SESSION_ACTIVE) session_start();
     return  $_SESSION[$key];
   }
 ?>

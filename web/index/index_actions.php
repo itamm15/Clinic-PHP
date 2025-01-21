@@ -7,4 +7,11 @@ function log_out() {
   stop_session();
   header("Location: ../login/login.php");
 }
+
+function get_full_name() {
+  $name = get_session_property("name");
+  $surname = get_session_property("surname");
+
+  return $name ." ". $surname;
+}
 ?>
