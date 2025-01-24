@@ -23,7 +23,7 @@
                 VALUES ('$name', '$surname', '$email', '$hashed_password');";
   
       if(mysqli_query($conn, $query)) {
-        start_session($name, $surname, $email);
+        start_session($name, $surname, $email, "pacjent");
         header('Location: ../index/index.php');
       } else {
         echo "Cos poszlo nie tak!".mysqli_error( $conn);

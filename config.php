@@ -19,11 +19,12 @@
   }
 
   // SESSION
-  function start_session($name, $surname, $email) {
+  function start_session($name, $surname, $email, $user_type) {
     session_start();
     $_SESSION["name"] = $name;
     $_SESSION["surname"] = $surname;
     $_SESSION["email"] = $email;
+    $_SESSION["user_type"] = $user_type;
   }
 
   function stop_session() {

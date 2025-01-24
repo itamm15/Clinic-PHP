@@ -17,7 +17,7 @@
     $admin_data = explode(";", fgets($admin_data_file));
     
     if ($password === $admin_data[1]) {
-      start_session($admin_data[2], $admin_data[3], ADMIN_EMAIL);
+      start_session($admin_data[2], $admin_data[3], ADMIN_EMAIL, "admin");
       header("Location: ../index/index.php");
       exit;
     } 
@@ -35,7 +35,7 @@
       $user = mysqli_fetch_assoc($user_result);
 
       if(password_verify($password, $user["haslo"])) {
-        start_session($user["imie"], $user["nazwisko"], $email);
+        start_session($user["imie"], $user["nazwisko"], $email, "pacjent");
         header("Location: ../index/index.php");
         exit;
       }
