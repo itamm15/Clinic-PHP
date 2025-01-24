@@ -1,0 +1,23 @@
+.lekarze_content {
+  width: 700px;
+  height: 100vh;
+}
+
+.lekarze_tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.lekarze_tabela th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.lekarze_tabela td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
