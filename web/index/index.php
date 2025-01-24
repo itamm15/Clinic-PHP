@@ -7,13 +7,16 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Przychodnia</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="index.css"?
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
     <div class="index_page">
       <!-- MENU -->
       <div class="index_menu">
-        <h2>Przychodnia</h2>
+        <h1>Przychodnia</h1>
+        <div class="index_menu__items">
+          <?php echo get_menu_items() ?>
+        </div>
       </div>
       <!-- CONTENT -->
       <div class="index_content">

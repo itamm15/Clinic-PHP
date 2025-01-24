@@ -35,6 +35,6 @@
 
   function get_session_property($key) {
     if(session_status() !== PHP_SESSION_ACTIVE) session_start();
-    return  $_SESSION[$key];
+    return $_SESSION[$key];
   }
 ?>
