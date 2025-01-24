@@ -1,0 +1,3 @@
+<div>
+  Nowy pacjent
+</div>

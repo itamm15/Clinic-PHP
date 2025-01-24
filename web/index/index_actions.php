@@ -26,8 +26,11 @@
   function get_admin_menu_items() {
     return <<<ADMIN_MENU_ITEMS
       <h2><a href="?page=lekarze">Lekarze</a></h2>
+      <h2><a href="?page=nowy_lekarz">Dodaj lekarza</a></h2>
       <h2><a href="?page=pacjenci">Pacjenci</a></h2>
+      <h2><a href="?page=nowy_pacjent">Nowy pacjent</a></h2>
       <h2><a href="?page=wizyty">Wizyty</a></h2>
+      <h2><a href="?page=nowa_wizyta">Nowa wizyty</a></h2>
       <h2><a href="?page=profil">Mój profil</a></h2>
     ADMIN_MENU_ITEMS;
   }
@@ -54,7 +57,9 @@
     if ($page === "wizyty") return require("../wizyty/wizyty.php");
     if ($page === "nowa_wizyta") return require("../wizyty/nowa_wizyta.php");
     if ($page === "lekarze") return require("../lekarze/lekarze.php");
+    if ($page === "nowy_lekarz") return require("../lekarze/nowy_lekarz.php");
     if ($page === "pacjenci") return require("../pacjenci/pacjenci.php");
+    if ($page === "nowy_pacjent") return require("../pacjenci/nowy_pacjent.php");
     if ($page === "profil") return require("../profil/profil.php");
     
     echo <<<INDEX_PAGE
