@@ -22,6 +22,11 @@ body, html {
   margin-left: 15px;
 }
 
+.index_menu__items a {
+  text-decoration: none;
+  color: black;
+}
+
 .index_content {
   display: flex;
   flex-direction: column;

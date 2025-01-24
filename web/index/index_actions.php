@@ -25,26 +25,40 @@
 
   function get_admin_menu_items() {
     return <<<ADMIN_MENU_ITEMS
-      <h2>Lekarze</h2>
-      <h2>Pacjenci</h2>
-      <h2>Wizyty</h2>
-      <h2>Mój profil</h2>
+      <h2><a href="?page=lekarze">Lekarze</a></h2>
+      <h2><a href="?page=pacjenci">Pacjenci</a></h2>
+      <h2><a href="?page=wizyty">Wizyty</a></h2>
+      <h2><a href="?page=profil">Mój profil</a></h2>
     ADMIN_MENU_ITEMS;
   }
 
   function get_pacjent_menu_items() {
     return <<<PACJENT_MENU_ITEMS
-      <h2>Wizyty</h2>
-      <h2>Zarejestruj wizytę</h2>
-      <h2>Mój profil</h2>
+      <h2><a href="?page=wizyty">Wizyty</a></h2>
+      <h2><a href="?page=nowa_wizyta">Zarejestruj wizytę</a></h2>
+      <h2><a href="?page=profil">Mój profil</a></h2>
     PACJENT_MENU_ITEMS;
   }
 
   function get_lekarz_menu_items() {
     return <<<LEKARZ_MENU_ITEMS
-      <h2>Pacjenci</h2>
-      <h2>Wizyty</h2>
-      <h2>Mój profil</h2>
+      <h2><a href="?page=pacjenci">Pacjenci</a></h2>
+      <h2><a href="?page=wizyty">Wizyty</a></h2>
+      <h2><a href="?page=profil">Mój profil</a></h2>
     LEKARZ_MENU_ITEMS;
+  }
+
+  function render_content_from_params() {
+    $page = $_GET["page"] ?? '';
+
+    if ($page === "wizyty") return require("../wizyty/wizyty.php");
+    if ($page === "nowa_wizyta") return require("../wizyty/nowa_wizyta.php");
+    if ($page === "lekarze") return require("../lekarze/lekarze.php");
+    if ($page === "pacjenci") return require("../pacjenci/pacjenci.php");
+    if ($page === "profil") return require("../profil/profil.php");
+    
+    echo <<<INDEX_PAGE
+      <h1>Wybierz pozycje z menu do przekierowania.</h1>
+    INDEX_PAGE;
   }
 ?>

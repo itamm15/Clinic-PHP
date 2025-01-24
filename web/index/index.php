@@ -27,7 +27,7 @@
           </form>
         </div> 
         <div>
-          CONTENT FROM MENU THERE
+          <?php render_content_from_params() ?>
         </div>
       </div>
     </div>
