@@ -8,8 +8,7 @@
     <label for="lekarz">Lekarz</label>
     <?php get_lekarze_for_select() ?>
 
-    <label for="powod_odwolania">Pacjent</label>
-    <?php get_pacjenci_for_select() ?>
+    <?php get_pacjent_details() ?>
 
     <label for="opis">Opis</label>
     <input type="text" name="opis" value='<?php echo $wizyta['opis'] ?>' required/>

@@ -117,6 +117,16 @@
     echo "</select>";
   }
 
+  function get_pacjent_details() {
+    if (get_session_property("user_type") === "pacjent") {
+      $pacjent_id = get_session_property("user_id");
+      echo "<input type='hidden' name='pacjent' value='$pacjent_id'>";
+    } else {
+      echo "<label for='pacjent'>Pacjent</label>";
+      get_pacjenci_for_select();
+    }
+  }
+
   function get_pacjenci_for_select() {
     $conn = get_conn();
     $query = "SELECT * FROM pacjenci";
@@ -128,6 +138,7 @@
       echo "<option value='$pacjent[id]'>$pacjent[imie] $pacjent[nazwisko]</option>";
     }
     echo "</select>";
+
   }
 
   function odwolaj_wizyte($wizyta_id, $powod_odwolania) {
@@ -138,7 +149,7 @@
 
     if (mysqli_query($conn, $query)) {
       close_conn($conn);
-      header('Location: ../index/index.php?page=wizyt');
+      header('Location: ../index/index.php?page=wizyty');
       exit();
     } else {
       echo "Nie udało się dodać odwołania wizyty!".mysqli_error($conn);
