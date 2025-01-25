@@ -43,3 +43,20 @@ body, html {
 .index_fullname {
   margin-right: 20px;
 }
+
+
+/* SEARCH INPUT */
+
+.search {
+  margin-bottom: 15px;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.search_input {
+  padding: 8px;
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

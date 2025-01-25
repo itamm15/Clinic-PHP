@@ -2,6 +2,9 @@
 
 <div class="lekarze_content">
   <h2>Lekarze</h2>
+  <div class="search">
+    <input type="text" class="search_input" data-table="lekarze_tabela" data-tr-data="lekarzDane" placeholder="Wpisz dane lekarza" />
+  </div>
   <table class="lekarze_tabela">
     <thead>
       <tr>

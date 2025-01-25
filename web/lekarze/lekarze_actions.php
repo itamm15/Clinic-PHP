@@ -56,7 +56,7 @@
 
     while ($lekarz = mysqli_fetch_row($result)) {
       echo <<<WYPISZ_LEKARZA
-        <tr>
+        <tr data-lekarz-dane="$lekarz[0] $lekarz[1]">
           <td>$lekarz[0]</td>
           <td>$lekarz[1]</td>
           <td>$lekarz[2]</td>
