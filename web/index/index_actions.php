@@ -3,6 +3,12 @@
 
   if (isset($_POST["log_out"])) log_out();
 
+  function require_logged_in_user() {
+    if (!get_session_property("name")) {
+      header("Location: ../login/login.php");
+    }
+  }
+
   function log_out() {
     stop_session();
     header("Location: ../login/login.php");

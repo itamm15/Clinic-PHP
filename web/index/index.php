@@ -1,4 +1,7 @@
-<?php require('index_actions.php') ?>
+<?php 
+  require('index_actions.php'); 
+  // require_logged_in_user();
+?>
 
 <!DOCTYPE html>
 <html>
