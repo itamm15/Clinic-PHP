@@ -14,6 +14,8 @@
 
     while ($wizyta = mysqli_fetch_assoc($result)) {
       $powod_odwolania = format_powod_odwolania($wizyta['powod_odwolania']);
+      $odwolaj_button = '';
+      if ($powod_odwolania === 'Nie') $odwolaj_button = '<button type="submit" name="delete" value="$wizyta[id]">Odwołaj</button>';
       echo <<<WYPISZ_WIZYTY
         <tr data-wizyta-dane="$wizyta[opis]">
           <td>$wizyta[id]</td>
@@ -24,7 +26,7 @@
           <td>$powod_odwolania</td>
           <td>
             <form method="POST">
-              <button type="submit" name="delete" value="$wizyta[id]">Usuń</button>
+              $odwolaj_button
               <button type="submit" name="edit" value="$wizyta[id]">Edytuj</button>
             </form>
           </td>
