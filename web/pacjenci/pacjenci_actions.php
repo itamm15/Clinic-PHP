@@ -1,5 +1,10 @@
 <?php
 
+  $pacjent_id_to_edit = $_POST["edit"] ?? '';
+  $pacjent_id_to_delete = $_POST['delete'] ?? '';
+
+  if ($pacjent_id_to_delete) delete_pacjent($pacjent_id_to_delete);
+
   function get_pacjenci() {
     $conn = get_conn();
     $query = "SELECT * FROM pacjenci";
@@ -23,5 +28,19 @@
     }
 
     close_conn($conn);
+  }
+
+  function delete_pacjent($pacjent_id_to_delete) {
+    $conn = get_conn();
+    $query = "DELETE FROM pacjenci WHERE id = $pacjent_id_to_delete";
+
+    if (mysqli_query( $conn, $query)) {
+      close_conn($conn);
+      header("Location: ../index/index.php?page=pacjenci");
+      exit();
+    } else {
+      close_conn($conn);
+      echo "Nie udało się usunąć pacjenta!";
+    }
   }
 ?>
