@@ -57,6 +57,7 @@
     if ($page === "wizyty") return require("../wizyty/wizyty.php");
     if ($page === "nowa_wizyta") return require("../wizyty/nowa_wizyta.php");
     if ($page === "odwolaj_wizyte") return require("../wizyty/odwolaj_wizyte.php");
+    if ($page === "edit_wizyte") return require("../wizyty/edit_wizyte.php");
     if ($page === "lekarze") return require("../lekarze/lekarze.php");
     if ($page === "nowy_lekarz") return require("../lekarze/nowy_lekarz.php");
     if ($page === "edit_lekarz") return require("../lekarze/edit_lekarz.php");
