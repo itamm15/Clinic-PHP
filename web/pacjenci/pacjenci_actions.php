@@ -1,8 +1,10 @@
 <?php
+  require_once("../../shared_validations/valdiate_user.php");
 
   $pacjent_id_to_edit = $_POST["edit"] ?? '';
   $pacjent_id_to_delete = $_POST['delete'] ?? '';
   $is_edit_pacjent_action = $_POST["edit_pacjent"] ??'';
+  $is_create_pacjent_action = $_POST["create"] ?? '';
 
   if ($pacjent_id_to_delete) delete_pacjent($pacjent_id_to_delete);
 
@@ -16,6 +18,14 @@
     $nazwisko = $_POST["nazwisko"];
     $pacjent_id = $_GET["pacjent_id"];
     edit_pacjent($imie, $nazwisko,  $pacjent_id);
+  }
+
+  if ($is_create_pacjent_action) {
+    $imie = $_POST["imie"];
+    $nazwisko = $_POST["nazwisko"];
+    $email = $_POST["email"];
+    $haslo = $_POST["haslo"];
+    create_pacjent( $imie, $nazwisko, $email, $haslo);
   }
 
   function get_pacjent($pacjent_id) {
@@ -80,6 +90,39 @@
     } else {
       echo "Nie udało się zedytować pacjenta!".mysqli_error($conn);
       close_conn($conn);
+    }
+  }
+
+  function create_pacjent($imie, $nazwisko, $email, $haslo) {
+    $conn = get_conn(); 
+    $errors = array();
+    validate_user($errors, $conn, $imie, $nazwisko, $email, $haslo);
+
+    if (count($errors) === 0) {
+      $hashed_password = password_hash($haslo, PASSWORD_DEFAULT);
+      $query = "INSERT INTO pacjenci (imie, nazwisko, email, haslo) 
+                VALUES ('$imie', '$nazwisko', '$email', '$hashed_password');";
+  
+      if(mysqli_query($conn, $query)) {
+        close_conn($conn);
+        header('Location: ../index/index.php?page=pacjenci');
+        exit();
+      } else {
+        echo "Cos poszlo nie tak!".mysqli_error( $conn);
+      }
+    } else {
+      close_conn($conn);
+      show_pacjent_form_errors($errors);
+    }
+  }
+
+  function show_pacjent_form_errors($errors) {
+    if (count($errors) > 0) {
+      echo '<div class="pacjent_form_errors">Ups! Coś poszło nie tak.';
+      foreach ($errors as $error ) {
+        echo '<p>'.$error.'</p>';
+      }
+      echo '</div>';
     }
   }
 ?>
