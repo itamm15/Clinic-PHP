@@ -58,6 +58,7 @@
     if ($page === "nowa_wizyta") return require("../wizyty/nowa_wizyta.php");
     if ($page === "lekarze") return require("../lekarze/lekarze.php");
     if ($page === "nowy_lekarz") return require("../lekarze/nowy_lekarz.php");
+    if ($page === "edit_lekarz") return require("../lekarze/edit_lekarz.php");
     if ($page === "pacjenci") return require("../pacjenci/pacjenci.php");
     if ($page === "nowy_pacjent") return require("../pacjenci/nowy_pacjent.php");
     if ($page === "profil") return require("../profil/profil.php");

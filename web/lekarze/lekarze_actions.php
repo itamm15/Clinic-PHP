@@ -5,6 +5,7 @@
   $lekarz_id_to_edit = $_POST['edit'] ?? '';
   $lekarz_id_to_delete = $_POST['delete'] ?? '';
   $is_create_lekarz_action = $_POST["create"] ?? '';
+  $is_edit_lekarz_action = $_POST["edit_lekarz"] ??'';
 
   if ($is_create_lekarz_action) {
     $imie = $_POST["imie"];
@@ -14,8 +15,16 @@
     create_lekarz( $imie, $nazwisko, $email, $haslo);
   }
 
+  if ($is_edit_lekarz_action) {
+    $imie = $_POST["imie"];
+    $nazwisko = $_POST["nazwisko"];
+    $lekarz_id = $_GET["lekarz_id"];
+    edit_lekarz($imie, $nazwisko,  $lekarz_id);
+  }
+
   if ($lekarz_id_to_edit) {
-    // utworz edit pagea
+    header("Location: ../index/index.php?page=edit_lekarz&lekarz_id=$lekarz_id_to_edit");
+    exit();
   }
 
   if ($lekarz_id_to_delete) {
@@ -29,6 +38,15 @@
       echo "Nie udało się usunąć lekarza!";
       close_conn($conn);
     }
+  }
+
+  function get_lekarz($lekarz_id) {
+    $conn = get_conn();
+    $query = "SELECT imie, nazwisko, email FROM lekarze WHERE id = $lekarz_id";
+    $result = mysqli_query($conn, $query);
+    close_conn($conn);
+
+    return mysqli_fetch_assoc($result);
   }
 
   function get_lekarze() {
@@ -56,12 +74,28 @@
     close_conn($conn);
   }
 
+  function edit_lekarz($imie, $nazwisko, $lekarz_id) {
+    $conn = get_conn();
+    $query = "UPDATE lekarze SET 
+              imie = '$imie',
+              nazwisko = '$nazwisko'
+              WHERE id = $lekarz_id";
+
+    if (mysqli_query($conn, $query)) {
+      close_conn($conn);
+      header("Location: ../index/index.php?page=lekarze");
+      exit();
+    } else {
+      echo "Nie udało się zedytować lekarza!".mysqli_error($conn);
+      close_conn($conn);
+    }
+  }
+
   function create_lekarz($imie, $nazwisko, $email, $haslo){
     $conn = get_conn();
     $lekarz_form_errors = array();
     validate_attrs($lekarz_form_errors, $conn, $imie, $nazwisko, $email, $haslo);
 
-    // DODAJ PRZENIESIENIE
     if (count($lekarz_form_errors) > 0) {
       close_conn($conn);
       show_lekarz_form_errors($lekarz_form_errors);
@@ -74,8 +108,8 @@
         close_conn($conn);
         header("Location: ../index/index.php?page=lekarze");
       } else {
-        close_conn($conn);
         echo "Nie udało się utworzyć lekarza!".mysqli_error($conn);
+        close_conn($conn);
       }
     }
   }
