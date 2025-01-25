@@ -61,6 +61,7 @@
     if ($page === "edit_lekarz") return require("../lekarze/edit_lekarz.php");
     if ($page === "pacjenci") return require("../pacjenci/pacjenci.php");
     if ($page === "nowy_pacjent") return require("../pacjenci/nowy_pacjent.php");
+    if ($page === "edit_pacjent") return require("../pacjenci/edit_pacjent.php");
     if ($page === "profil") return require("../profil/profil.php");
     
     echo <<<INDEX_PAGE
