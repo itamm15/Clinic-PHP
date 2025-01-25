@@ -1,0 +1,23 @@
+.wizyty_content {
+  width: 1100px;
+  height: 100vh;
+}
+
+.wizyty_tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.wizyty_tabela th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.wizyty_tabela td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
