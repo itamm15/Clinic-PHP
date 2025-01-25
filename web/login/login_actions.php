@@ -19,7 +19,7 @@
     $admin_data = explode(";", fgets($admin_data_file));
     
     if ($password === $admin_data[1]) {
-      start_session($admin_data[2], $admin_data[3], ADMIN_EMAIL, "admin");
+      start_session($admin_data[2], $admin_data[3], ADMIN_EMAIL, -1, "admin");
       header("Location: ../index/index.php");
       exit;
     } 
@@ -37,7 +37,7 @@
       $lekarz = mysqli_fetch_assoc($result);
 
       if (password_verify($password, $lekarz["haslo"])) {
-        start_session($lekarz['imie'], $lekarz['nazwisko'], $email, "lekarz");
+        start_session($lekarz['imie'], $lekarz['nazwisko'], $email, $lekarz['id'], "lekarz");
         header("Location: ../index/index.php");
         exit;
       }
@@ -46,7 +46,6 @@
     // TODO: wpp dodaj errory
     close_conn($conn);
   }
-
   function login_user($email, $password) {
     $conn = get_conn();
     $user_query = "SELECT * FROM pacjenci WHERE email = '$email';";
@@ -56,7 +55,7 @@
       $user = mysqli_fetch_assoc($user_result);
 
       if(password_verify($password, $user["haslo"])) {
-        start_session($user["imie"], $user["nazwisko"], $email, "pacjent");
+        start_session($user["imie"], $user["nazwisko"], $email, $user['id'], "pacjent");
         header("Location: ../index/index.php");
         exit;
       }

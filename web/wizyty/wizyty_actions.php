@@ -47,7 +47,21 @@
                 pacjenci.imie AS pacjent_imie, pacjenci.nazwisko AS pacjent_nazwisko
               FROM wizyty 
               INNER JOIN lekarze ON wizyty.lekarz_id = lekarze.id
-              INNER JOIN pacjenci ON wizyty.pacjent_id = pacjenci.id;";
+              INNER JOIN pacjenci ON wizyty.pacjent_id = pacjenci.id";
+
+    if (get_session_property('user_type') === 'lekarz') {
+      $lekarz_id = get_session_property('user_id');
+      $filter_by_lekarz_query = " WHERE lekarze.id = $lekarz_id";
+
+      $query .= $filter_by_lekarz_query;
+    }
+
+    if (get_session_property('user_type') === 'pacjent') {
+      $pacjent_id = get_session_property('user_id');
+      $filter_by_pacjent_query = " WHERE pacjenci.id = $pacjent_id";
+
+      $query .= $filter_by_pacjent_query;
+    }
 
     $result = mysqli_query($conn, $query);
 

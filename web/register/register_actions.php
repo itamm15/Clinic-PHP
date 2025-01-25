@@ -21,10 +21,11 @@
       $hashed_password = password_hash($password, PASSWORD_DEFAULT);
       $query = "INSERT INTO pacjenci (imie, nazwisko, email, haslo) 
                 VALUES ('$name', '$surname', '$email', '$hashed_password');";
-  
+
       if(mysqli_query($conn, $query)) {
+        $user_id = mysqli_insert_id($conn);
         close_conn($conn);
-        start_session($name, $surname, $email, "pacjent");
+        start_session($name, $surname, $email, $user_id, "pacjent");
         header('Location: ../index/index.php');
       } else {
         echo "Cos poszlo nie tak!".mysqli_error( $conn);
