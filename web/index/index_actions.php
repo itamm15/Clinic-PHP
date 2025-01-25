@@ -30,7 +30,7 @@
       <h2><a href="?page=pacjenci">Pacjenci</a></h2>
       <h2><a href="?page=nowy_pacjent">Nowy pacjent</a></h2>
       <h2><a href="?page=wizyty">Wizyty</a></h2>
-      <h2><a href="?page=nowa_wizyta">Nowa wizyty</a></h2>
+      <h2><a href="?page=nowa_wizyta">Nowa wizyta</a></h2>
       <h2><a href="?page=profil">Mój profil</a></h2>
     ADMIN_MENU_ITEMS;
   }

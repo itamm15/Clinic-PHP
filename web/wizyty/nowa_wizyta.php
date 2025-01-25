@@ -1,1 +1,19 @@
-<h2>Nowa wizyta</h2>
+<?php require("wizyty_actions.php"); ?>
+
+<div class="wizyty_content_form">
+  <h2>Nowa wizyta</h2>
+  <form method="POST" class="wizyta_form">
+    <label for="lekarz">Lekarz</label>
+    <?php get_lekarze_for_select() ?>
+
+    <label for="powod_odwolania">Pacjent</label>
+    <?php get_pacjenci_for_select() ?>
+
+    <label for="data_wizyty">Data wizyty</label>
+    <input type="date" name="data_wizyty" required />
+
+    <label for="opis">Opis</label>
+    <input type="text" name="opis" required/>
+    <button name="create_wizyte" value="create_wizyte">Stwórz wizytę</button>
+  </form>
+</div>

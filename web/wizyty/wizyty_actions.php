@@ -4,6 +4,7 @@
   $is_edit_action = $_POST["edit"] ?? '';
   $is_odwolaj_wizyte_action = $_POST["odwolaj_wizyte"] ?? '';
   $is_edit_wizyte_action = $_POST["edytuj_wizyte"] ?? '';
+  $is_create_wizyte_action = $_POST["create_wizyte"] ?? '';
 
   if ($is_odwolaj_action) {
     header("Location: ../index/index.php?page=odwolaj_wizyte&wizyta_id=$is_odwolaj_action");
@@ -28,6 +29,15 @@
     $opis = $_POST["opis"];
     edit_wizyta($wizyta_id, $lekarz_id, $pacjent_id, $opis);
   }
+
+  if ($is_create_wizyte_action) {
+    $lekarz_id = $_POST["lekarz"];
+    $pacjent_id = $_POST["pacjent"];
+    $opis = $_POST["opis"];
+    $data_wizyty = $_POST["data_wizyty"];
+    create_wizyta($lekarz_id, $pacjent_id, $opis, $data_wizyty);
+  }
+
 
   function get_wizyty() {
     $conn = get_conn();
@@ -136,6 +146,21 @@
       exit();
     } else {
       echo "Nie udało się zaktualizować wizyty, zobacz błędy!".mysqli_error($conn);
+      close_conn($conn);
+    }
+  }
+
+  function create_wizyta($lekarz_id, $pacjent_id, $opis, $data_wizyty) {
+    $conn = get_conn();
+    $query = "INSERT INTO wizyty (lekarz_id, pacjent_id, opis, data_wizyty, powod_odwolania) VALUES
+              ($lekarz_id, $pacjent_id, '$opis', '$data_wizyty', '');";
+
+    if (mysqli_query($conn, $query)) {
+      close_conn($conn);
+      header("Location: ../index/index.php?page=wizyty");
+      exit();
+    } else {
+      echo "Nie udało się utworzyć wizyty!".mysqli_error($conn);
       close_conn($conn);
     }
   }
