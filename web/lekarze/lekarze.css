@@ -21,3 +21,35 @@
   padding: 8px;
   text-align: left;
 }
+
+.lekarze_content_form {
+  width: 500px;
+  height: 100vh;
+}
+
+.lekarz_form {
+  padding: 10px 30px 10px 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.lekarz_form > label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.lekarz_form > input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.lekarz_form_errors {
+  color: red;
+  font-size: 16px;
+}
