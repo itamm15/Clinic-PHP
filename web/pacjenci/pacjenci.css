@@ -1,0 +1,23 @@
+.pacjenci_content {
+  width: 700px;
+  height: 100vh;
+}
+
+.pacjenci_tabela {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pacjenci_tabela th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.pacjenci_tabela td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}

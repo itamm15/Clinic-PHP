@@ -9,6 +9,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="../lekarze/lekarze.css">
+    <link rel="stylesheet" href="../pacjenci/pacjenci.css">
     <script src="../../js/searcher.js"></script>
   </head>
   <body>
