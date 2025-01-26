@@ -6,7 +6,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const dataWizyty = document.querySelector('input[name="data_wizyty"]');
   
-  dataWizyty.addEventListener('input', (event) => {
+  dataWizyty.addEventListener('blur', (event) => {
     const input = event.target;
     const value = new Date(input.value);
     const hour = value.getHours();
