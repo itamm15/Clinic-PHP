@@ -41,7 +41,7 @@
     $conn = get_conn();
     $query = "SELECT * FROM pacjenci";
     $result = mysqli_query($conn, $query);
-
+    $actions_class = actions_class();
     while ($pacjent = mysqli_fetch_row($result)) {
       echo <<<WYPISZ_PACJENTA
         <tr data-pacjent-dane="$pacjent[0] $pacjent[1]">
@@ -49,7 +49,7 @@
           <td>$pacjent[1]</td>
           <td>$pacjent[2]</td>
           <td>$pacjent[3]</td>
-          <td>
+          <td style="$actions_class">
             <form method="POST">
               <button type="submit" name="delete" value="$pacjent[0]">Usuń</button>
               <button type="submit" name="edit" value="$pacjent[0]">Edytuj</button>
@@ -60,6 +60,12 @@
     }
 
     close_conn($conn);
+  }
+
+  function actions_class() {
+    $czy_actions_dostepne = get_session_property("user_type") !== "lekarz";
+    if ($czy_actions_dostepne) return "";
+    return "display: none;";
   }
 
   function delete_pacjent($pacjent_id_to_delete) {

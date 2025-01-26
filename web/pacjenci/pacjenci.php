@@ -12,7 +12,7 @@
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>Email</th>
-        <th>Akcje</th>
+        <th style="<?php echo actions_class() ?>">Akcje</th>
       </tr>
     </thead>
     <tbody>
