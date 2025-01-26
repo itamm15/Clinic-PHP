@@ -11,6 +11,7 @@
   </head>
   <body class="login_page">
     <form method="post" class="login_form">
+      <?php show_errors() ?>
       <h1 class="login_header">Zaloguj się</h1>
       <div class="login_form__inputs">
         <input type="text" name="email" placeholder="Email" class="login_text__input">
