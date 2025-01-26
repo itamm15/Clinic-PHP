@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../lekarze/lekarze.css">
     <link rel="stylesheet" href="../pacjenci/pacjenci.css">
     <link rel="stylesheet" href="../wizyty/wizyta.css">
+    <link rel="stylesheet" href="../profil/profil.css">
     <script src="../../js/searcher.js"></script>
   </head>
   <body>
