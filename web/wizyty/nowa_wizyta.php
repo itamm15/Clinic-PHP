@@ -9,7 +9,7 @@
     <?php get_pacjent_details() ?>
 
     <label for="data_wizyty">Data wizyty</label>
-    <input type="date" name="data_wizyty" required />
+    <input type="datetime-local" name="data_wizyty" required />
 
     <label for="opis">Opis</label>
     <input type="text" name="opis" required/>
