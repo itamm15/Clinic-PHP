@@ -22,3 +22,18 @@
 .profil_info span {
   font-weight: bold;
 }
+
+.profil_info label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.profil_info input {
+  width: 95%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
