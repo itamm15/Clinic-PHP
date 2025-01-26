@@ -17,14 +17,14 @@
     validate_attrs($errors, $email, $password);
     if (count($errors) === 0) {
       if ($email == ADMIN_EMAIL) {
-        login_admin($password);
-      }
-
-      if (explode('@', $email)[1] == PRZYCHODNIA_DOMAIN) {
-        login_lekarz($email, $password);
+        return login_admin($password);
       } 
 
-      login_user($email, $password);
+      if (explode('@', $email)[1] == PRZYCHODNIA_DOMAIN) {
+        return login_lekarz($email, $password);
+      } else {
+        login_user($email, $password);
+      } 
     }
   }
 
