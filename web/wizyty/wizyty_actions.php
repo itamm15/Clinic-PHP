@@ -202,4 +202,10 @@
       close_conn($conn);
     }
   }
+
+  function get_todays_first_slot() {
+    $today = date('Y-m-d');
+
+    echo $today."T08:00";
+  }
 ?>

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../wizyty/wizyta.css">
     <link rel="stylesheet" href="../profil/profil.css">
     <script src="../../js/searcher.js"></script>
+    <script src="../../js/datetimelocal_validate.js"></script>
   </head>
   <body>
     <div class="index_page">
