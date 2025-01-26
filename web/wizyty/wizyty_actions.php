@@ -39,6 +39,19 @@
   }
 
 
+  /*
+  Renders wizyty for table (`<tbody>` element).
+  It also fetches lekarze and pacjenci (as this is middle table in many-to-many relation).
+  
+  ## For admin:
+    It fetches all of the wizyty
+
+  ## For lekarz:
+    If fetches only wizyty of the given lekarz (see `$filter_by_lekarz_query`).
+
+  ## For pacjent:
+    If fetches only wizyty of the given pacjent (see `$filter_by_pacjent_query`).
+  */
   function get_wizyty() {
     $conn = get_conn();
     $query = "SELECT 

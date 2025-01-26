@@ -37,6 +37,9 @@
     return mysqli_fetch_assoc( $result );
   }
 
+  /*
+  Renders pacjenci for table (`<tbody>` element).
+  */
   function get_pacjenci() {
     $conn = get_conn();
     $query = "SELECT * FROM pacjenci";
@@ -62,6 +65,10 @@
     close_conn($conn);
   }
 
+  /*
+  Pacjenci actions are avilable only for admin user. 
+  (view is accessible for admin and lekarze.)
+  */
   function actions_class() {
     $czy_actions_dostepne = get_session_property("user_type") !== "lekarz";
     if ($czy_actions_dostepne) return "";

@@ -8,6 +8,9 @@
     change_admin_password($_POST["admin_password"]);
   }
 
+  /*
+  Form for admin to change their password.
+  */
   function render_change_password_form() {
     if (get_session_property("user_type") === "admin") {
       return <<<ADMIN_ZMIEN_HASLO
@@ -33,6 +36,10 @@
     }
   }
 
+  /*
+  Returns data to be stored in `admin_data.txt` file, for password change functionality.
+  (it is stored as CSV)
+  */
   function get_data_to_write($new_password) {
     $email = get_session_property("email");
     $name = get_session_property("name");

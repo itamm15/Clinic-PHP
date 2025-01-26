@@ -21,6 +21,27 @@
     return $name ." ". $surname;
   }
 
+  /*
+  Render menu for the given user type. Current views:
+  ** Admin
+    - lekarze,
+    - dodaj lekarza,
+    - pacjenci,
+    - nowy pacjent,
+    - wizyty,
+    - nowa wizyta, 
+    - moj profil
+
+  ** Lekarz
+    - pacjenci,
+    - wizyty,
+    - moj profil
+
+  ** Pacjent
+    - wizyty,
+    - zarejestruj wizyte,
+    - moj profil
+  */
   function get_menu_items() {
     $user_type = get_session_property("user_type");
 
@@ -57,6 +78,28 @@
     LEKARZ_MENU_ITEMS;
   }
 
+  /*
+  Renders content within layout based on the `page` param in URL.
+  If the `page` param is either invalid or not passed renders text to select item from menu.
+  
+  Layout view:
+  __________________________________________________
+  |        |          current_user_info    logout_b
+  |  MENU  |________________________________________
+  |        |
+  |        |
+  |        |
+  |        |
+  |        |          CONTENT FROM PARAMS
+  |        |
+  |        |           
+  |        |
+  |        |
+  |        |
+
+  Thanks to this approach, we have the same layout on each sub-page.
+  (This makes `index.php` a root file when user is logged in :))
+  */
   function render_content_from_params() {
     $page = $_GET["page"] ?? '';
 

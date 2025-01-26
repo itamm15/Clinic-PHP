@@ -1,5 +1,4 @@
 <?php
-  // TODO: create consts file
   const PRZYCHODNIA_DOMAIN = "przychodnia.com";
 
   $lekarz_id_to_edit = $_POST['edit'] ?? '';
@@ -49,6 +48,9 @@
     return mysqli_fetch_assoc($result);
   }
 
+  /*
+  Renders lekarze for table (`<tbody>` element).
+  */
   function get_lekarze() {
     $conn = get_conn();
     $query = "SELECT * FROM lekarze;";
@@ -114,6 +116,13 @@
     }
   }
 
+
+  /* 
+  Validates lekarz params before creating. It ensures that:
+  - name is not empty,
+  - surname is not empty,
+  - email is valid and is not already taken.
+  */
   function validate_attrs(&$lekarz_form_errors, $conn, $name, $surname, $email, $password) {
     if (!is_name_valid($name)) array_push($lekarz_form_errors, "Imie nie moze byc puste.");
     if (!is_name_valid($surname)) array_push($lekarz_form_errors, "Nazwisko nie moze byc puste");
