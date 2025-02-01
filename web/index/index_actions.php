@@ -59,6 +59,7 @@
       <h2><a href="?page=wizyty">Wizyty</a></h2>
       <h2><a href="?page=nowa_wizyta">Nowa wizyta</a></h2>
       <h2><a href="?page=profil">Mój profil</a></h2>
+      <h2><a href="?page=autor">Autor</a></h2>
     ADMIN_MENU_ITEMS;
   }
 
@@ -67,6 +68,7 @@
       <h2><a href="?page=wizyty">Wizyty</a></h2>
       <h2><a href="?page=nowa_wizyta">Zarejestruj wizytę</a></h2>
       <h2><a href="?page=profil">Mój profil</a></h2>
+      <h2><a href="?page=autor">Autor</a></h2>
     PACJENT_MENU_ITEMS;
   }
 
@@ -75,6 +77,7 @@
       <h2><a href="?page=pacjenci">Pacjenci</a></h2>
       <h2><a href="?page=wizyty">Wizyty</a></h2>
       <h2><a href="?page=profil">Mój profil</a></h2>
+      <h2><a href="?page=autor">Autor</a></h2>
     LEKARZ_MENU_ITEMS;
   }
 
@@ -114,6 +117,7 @@
     if ($page === "nowy_pacjent") return require("../pacjenci/nowy_pacjent.php");
     if ($page === "edit_pacjent") return require("../pacjenci/edit_pacjent.php");
     if ($page === "profil") return require("../profil/profil.php");
+    if ($page === "autor") return require("../autor/autor.php");
     
     echo <<<INDEX_PAGE
       <h1>Wybierz pozycje z menu do przekierowania.</h1>
