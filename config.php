@@ -2,7 +2,7 @@
   // DB
   function get_conn() {
     $server = "localhost";
-    $port = "3307";
+    $port = "3306";
     $username = "root";
     $password = "";
     $database = "przychodnia";
